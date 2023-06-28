@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\PushNotification\Business\Creator;
+namespace Spryker\Zed\PushNotification\Business\Updater;
 
 use ArrayObject;
 use Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer;
@@ -15,9 +15,14 @@ use Spryker\Zed\PushNotification\Business\Filter\PushNotificationProviderFilterI
 use Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface;
 use Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface;
 
-class PushNotificationProviderCreator implements PushNotificationProviderCreatorInterface
+class PushNotificationProviderUpdater implements PushNotificationProviderUpdaterInterface
 {
     use TransactionTrait;
+
+    /**
+     * @var \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface
+     */
+    protected PushNotificationEntityManagerInterface $pushNotificationEntityManager;
 
     /**
      * @var \Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface
@@ -30,23 +35,18 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
     protected PushNotificationProviderFilterInterface $pushNotificationProviderFilter;
 
     /**
-     * @var \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface
-     */
-    protected PushNotificationEntityManagerInterface $pushNotificationEntityManager;
-
-    /**
+     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
      * @param \Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface $pushNotificationProviderValidator
      * @param \Spryker\Zed\PushNotification\Business\Filter\PushNotificationProviderFilterInterface $pushNotificationProviderFilter
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
      */
     public function __construct(
+        PushNotificationEntityManagerInterface $pushNotificationEntityManager,
         PushNotificationProviderValidatorInterface $pushNotificationProviderValidator,
-        PushNotificationProviderFilterInterface $pushNotificationProviderFilter,
-        PushNotificationEntityManagerInterface $pushNotificationEntityManager
+        PushNotificationProviderFilterInterface $pushNotificationProviderFilter
     ) {
+        $this->pushNotificationEntityManager = $pushNotificationEntityManager;
         $this->pushNotificationProviderValidator = $pushNotificationProviderValidator;
         $this->pushNotificationProviderFilter = $pushNotificationProviderFilter;
-        $this->pushNotificationEntityManager = $pushNotificationEntityManager;
     }
 
     /**
@@ -54,7 +54,7 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
      *
      * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
      */
-    public function createPushNotificationProviderCollection(
+    public function updatePushNotificationProviderCollection(
         PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
     ): PushNotificationProviderCollectionResponseTransfer {
         $this->assertRequiredFields($pushNotificationProviderCollectionRequestTransfer);
@@ -76,9 +76,10 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
             ->filterPushNotificationProvidersByValidity($pushNotificationProviderCollectionResponseTransfer);
 
         if ($validPushNotificationProviderTransfers->count()) {
-            $validPushNotificationProviderTransfers = $this->getTransactionHandler()->handleTransaction(function () use ($validPushNotificationProviderTransfers) {
-                return $this->executeCreatePushNotificationProviderCollectionTransaction($validPushNotificationProviderTransfers);
-            });
+            $validPushNotificationProviderTransfers = $this->getTransactionHandler()
+                ->handleTransaction(function () use ($validPushNotificationProviderTransfers) {
+                    return $this->executeUpdatePushNotificationProviderCollectionTransaction($validPushNotificationProviderTransfers);
+                });
         }
 
         $pushNotificationProviderTransfers = $this->pushNotificationProviderFilter->mergePushNotificationProviders(
@@ -94,13 +95,15 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
      *
      * @return \ArrayObject<array-key, \Generated\Shared\Transfer\PushNotificationProviderTransfer>
      */
-    protected function executeCreatePushNotificationProviderCollectionTransaction(
+    protected function executeUpdatePushNotificationProviderCollectionTransaction(
         ArrayObject $pushNotificationProviderTransfers
     ): ArrayObject {
         $persistedPushNotificationProviderTransfers = new ArrayObject();
 
         foreach ($pushNotificationProviderTransfers as $entityIdentifier => $pushNotificationProviderTransfer) {
-            $pushNotificationProviderTransfer = $this->pushNotificationEntityManager->createPushNotificationProvider($pushNotificationProviderTransfer);
+            $pushNotificationProviderTransfer = $this->pushNotificationEntityManager
+                ->updatePushNotificationProvider($pushNotificationProviderTransfer);
+
             $persistedPushNotificationProviderTransfers->offsetSet(
                 $entityIdentifier,
                 $pushNotificationProviderTransfer,
@@ -115,15 +118,15 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
      *
      * @return void
      */
-    protected function assertRequiredFields(
-        PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-    ): void {
+    protected function assertRequiredFields(PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer): void
+    {
         $pushNotificationProviderCollectionRequestTransfer
             ->requireIsTransactional()
             ->requirePushNotificationProviders();
 
         foreach ($pushNotificationProviderCollectionRequestTransfer->getPushNotificationProviders() as $pushNotificationProviderTransfer) {
             $pushNotificationProviderTransfer
+                ->requireUuid()
                 ->requireName();
         }
     }

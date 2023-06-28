@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\PushNotification\Helper;
+namespace SprykerTest\Shared\PushNotification\Helper;
 
-use ArrayObject;
 use Codeception\Module;
+use Generated\Shared\DataBuilder\PushNotificationProviderBuilder;
 use Generated\Shared\Transfer\PushNotificationGroupTransfer;
 use Generated\Shared\Transfer\PushNotificationProviderTransfer;
 use Generated\Shared\Transfer\PushNotificationSubscriptionCollectionRequestTransfer;
@@ -23,32 +23,33 @@ use SprykerTest\Shared\Testify\Helper\DataCleanupHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 use SprykerTest\Zed\Testify\Helper\Business\BusinessHelperTrait;
 
-class PushNotificationDataHelper extends Module
+class PushNotificationHelper extends Module
 {
     use LocatorHelperTrait;
     use DataCleanupHelperTrait;
     use BusinessHelperTrait;
 
     /**
-     * @param array<string, mixed> $pushNotificationProviderOverride
+     * @param array<string, mixed> $seed
      *
      * @return \Generated\Shared\Transfer\PushNotificationProviderTransfer
      */
     public function havePushNotificationProvider(
-        array $pushNotificationProviderOverride = []
+        array $seed = []
     ): PushNotificationProviderTransfer {
-        $pushNotificationProviderName = $pushNotificationProviderOverride[PushNotificationProviderTransfer::NAME] ?? uniqid();
+        $pushNotificationProviderTransfer = (new PushNotificationProviderBuilder($seed))->build();
 
-        $pushNotificationProviderEntity = SpyPushNotificationProviderQuery::create()
-            ->filterByName($pushNotificationProviderName)
+        $pushNotificationProviderEntity = $this->getPushNotificationProviderQuery()
+            ->filterByName($pushNotificationProviderTransfer->getNameOrFail())
             ->findOneOrCreate();
+
         $pushNotificationProviderEntity->save();
 
         $pushNotificationProviderTransfer = (new PushNotificationProviderTransfer())
             ->fromArray($pushNotificationProviderEntity->toArray(), true);
 
         $this->getDataCleanupHelper()->_addCleanup(function () use ($pushNotificationProviderTransfer): void {
-            $this->cleanPushNotificationProvider($pushNotificationProviderTransfer->getIdPushNotificationProviderOrFail());
+            $this->deletePushNotificationProvider($pushNotificationProviderTransfer->getIdPushNotificationProviderOrFail());
         });
 
         return $pushNotificationProviderTransfer;
@@ -62,7 +63,7 @@ class PushNotificationDataHelper extends Module
     public function havePushNotificationGroup(array $pushNotificationGroupOverride = []): PushNotificationGroupTransfer
     {
         $pushNotificationGroupName = $pushNotificationGroupOverride[PushNotificationGroupTransfer::NAME] ?? uniqid();
-        $pushNotificationGroupEntity = SpyPushNotificationGroupQuery::create()
+        $pushNotificationGroupEntity = $this->getPushNotificationGroupQuery()
             ->filterByName($pushNotificationGroupName)
             ->findOneOrCreate();
         $pushNotificationGroupEntity->save();
@@ -71,7 +72,7 @@ class PushNotificationDataHelper extends Module
             ->fromArray($pushNotificationGroupEntity->toArray(), true);
 
         $this->getDataCleanupHelper()->_addCleanup(function () use ($pushNotificationGroupTransfer): void {
-            $this->cleanPushNotificationGroup($pushNotificationGroupTransfer->getIdPushNotificationGroupOrFail());
+            $this->deletePushNotificationGroup($pushNotificationGroupTransfer->getIdPushNotificationGroupOrFail());
         });
 
         return $pushNotificationGroupTransfer;
@@ -97,19 +98,23 @@ class PushNotificationDataHelper extends Module
             ->setProvider($pushNotificationProviderTransfer)
             ->setGroup($pushNotificationGroupTransfer);
 
-        /** @var \Spryker\Zed\PushNotification\Business\PushNotificationFacadeInterface $pushNotificationFacade */
-        $pushNotificationFacade = $this->getLocator()->pushNotification()->facade();
-        $pushNotificationSubscriptionCollectionResponseTransfer = $pushNotificationFacade->createPushNotificationSubscriptionCollection(
-            (new PushNotificationSubscriptionCollectionRequestTransfer())
-                ->setPushNotificationSubscriptions(new ArrayObject([$pushNotificationSubscriptionTransfer]))
-                ->setIsTransactional(false),
-        );
+        $pushNotificationSubscriptionCollectionRequestTransfer = (new PushNotificationSubscriptionCollectionRequestTransfer())
+            ->addPushNotificationSubscription($pushNotificationSubscriptionTransfer)
+            ->setIsTransactional(false);
+
+        $pushNotificationSubscriptionCollectionResponseTransfer = $this->getLocator()
+            ->pushNotification()
+            ->facade()
+            ->createPushNotificationSubscriptionCollection($pushNotificationSubscriptionCollectionRequestTransfer);
+
         /** @var \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer */
         $pushNotificationSubscriptionTransfer = $pushNotificationSubscriptionCollectionResponseTransfer
             ->getPushNotificationSubscriptions()
-            ->offsetGet(0);
+            ->getIterator()
+            ->current();
+
         $this->getDataCleanupHelper()->_addCleanup(function () use ($pushNotificationSubscriptionTransfer): void {
-            $this->cleanPushNotificationSubscription(
+            $this->deletePushNotificationSubscription(
                 $pushNotificationSubscriptionTransfer->getIdPushNotificationSubscriptionOrFail(),
             );
         });
@@ -147,22 +152,10 @@ class PushNotificationDataHelper extends Module
             ->setProvider($pushNotificationProviderTransfer);
 
         $this->getDataCleanupHelper()->_addCleanup(function () use ($pushNotificationTransfer): void {
-            $this->cleanPushNotification($pushNotificationTransfer->getIdPushNotificationOrFail());
+            $this->deletePushNotification($pushNotificationTransfer->getIdPushNotificationOrFail());
         });
 
         return $pushNotificationTransfer;
-    }
-
-    /**
-     * @param int $idPushNotificationProvider
-     *
-     * @return void
-     */
-    protected function cleanPushNotificationProvider(int $idPushNotificationProvider): void
-    {
-        SpyPushNotificationProviderQuery::create()
-            ->filterByIdPushNotificationProvider($idPushNotificationProvider)
-            ->delete();
     }
 
     /**
@@ -170,11 +163,13 @@ class PushNotificationDataHelper extends Module
      *
      * @return void
      */
-    protected function cleanPushNotificationGroup(int $idPushNotificationGroup): void
+    protected function deletePushNotificationGroup(int $idPushNotificationGroup): void
     {
-        SpyPushNotificationGroupQuery::create()
-            ->filterByIdPushNotificationGroup($idPushNotificationGroup)
-            ->delete();
+        $pushNotificationGroup = $this->getPushNotificationGroupQuery()->findOneByIdPushNotificationGroup($idPushNotificationGroup);
+
+        if ($pushNotificationGroup) {
+            $pushNotificationGroup->delete();
+        }
     }
 
     /**
@@ -182,11 +177,14 @@ class PushNotificationDataHelper extends Module
      *
      * @return void
      */
-    protected function cleanPushNotificationSubscription(int $idPushNotificationSubscription): void
+    protected function deletePushNotificationSubscription(int $idPushNotificationSubscription): void
     {
-        SpyPushNotificationSubscriptionQuery::create()
-            ->filterByIdPushNotificationSubscription($idPushNotificationSubscription)
-            ->delete();
+        $pushNotificationSubscriptionEntity = $this->getPushNotificationSubscriptionQuery()
+            ->findOneByIdPushNotificationSubscription($idPushNotificationSubscription);
+
+        if ($pushNotificationSubscriptionEntity) {
+            $pushNotificationSubscriptionEntity->delete();
+        }
     }
 
     /**
@@ -194,10 +192,59 @@ class PushNotificationDataHelper extends Module
      *
      * @return void
      */
-    protected function cleanPushNotification(int $idPushNotification): void
+    protected function deletePushNotification(int $idPushNotification): void
     {
-        SpyPushNotificationQuery::create()
-            ->filterByIdPushNotification($idPushNotification)
-            ->delete();
+        $pushNotificationEntity = $this->getPushNotificationQuery()->findOneByIdPushNotification($idPushNotification);
+
+        if ($pushNotificationEntity) {
+            $pushNotificationEntity->delete();
+        }
+    }
+
+    /**
+     * @param int $idPushNotificationProvider
+     *
+     * @return void
+     */
+    protected function deletePushNotificationProvider(int $idPushNotificationProvider): void
+    {
+        $pushNotificationProviderEntity = $this->getPushNotificationProviderQuery()
+            ->findOneByIdPushNotificationProvider($idPushNotificationProvider);
+
+        if ($pushNotificationProviderEntity) {
+            $pushNotificationProviderEntity->delete();
+        }
+    }
+
+    /**
+     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroupQuery
+     */
+    protected function getPushNotificationGroupQuery(): SpyPushNotificationGroupQuery
+    {
+        return SpyPushNotificationGroupQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery
+     */
+    protected function getPushNotificationSubscriptionQuery(): SpyPushNotificationSubscriptionQuery
+    {
+        return SpyPushNotificationSubscriptionQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery
+     */
+    protected function getPushNotificationQuery(): SpyPushNotificationQuery
+    {
+        return SpyPushNotificationQuery::create();
+    }
+
+    /**
+     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery
+     */
+    protected function getPushNotificationProviderQuery(): SpyPushNotificationProviderQuery
+    {
+        return SpyPushNotificationProviderQuery::create();
     }
 }

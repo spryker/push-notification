@@ -5,14 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\PushNotification\Business\PushNotificationFacade;
+namespace SprykerTest\Zed\PushNotification\Business\Facade;
 
 use ArrayObject;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ErrorTransfer;
 use Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer;
 use Generated\Shared\Transfer\PushNotificationGroupTransfer;
-use Generated\Shared\Transfer\PushNotificationProviderTransfer;
 use Spryker\Zed\PushNotification\PushNotificationDependencyProvider;
 use SprykerTest\Zed\PushNotification\PushNotificationBusinessTester;
 
@@ -23,17 +22,26 @@ use SprykerTest\Zed\PushNotification\PushNotificationBusinessTester;
  * @group Zed
  * @group PushNotification
  * @group Business
- * @group PushNotificationFacade
  * @group Facade
- * @group PushNotificationFacadeSendPushNotificationsTest
+ * @group SendPushNotificationsTest
  * Add your own group annotations below this line
  */
-class PushNotificationFacadeSendPushNotificationsTest extends Unit
+class SendPushNotificationsTest extends Unit
 {
     /**
      * @var \SprykerTest\Zed\PushNotification\PushNotificationBusinessTester
      */
     protected PushNotificationBusinessTester $tester;
+
+    /**
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->tester->ensurePushNotificationTablesAreEmpty();
+    }
 
     /**
      * @return void
@@ -76,9 +84,7 @@ class PushNotificationFacadeSendPushNotificationsTest extends Unit
         $pushNotificationTransfer = $this->tester->havePushNotification();
         $pushNotificationSubscriptionTransfer = $this->tester->havePushNotificationSubscription(
             [],
-            [
-                PushNotificationProviderTransfer::NAME => $pushNotificationTransfer->getProviderOrFail()->getNameOrFail(),
-            ],
+            [],
             [
                 PushNotificationGroupTransfer::NAME => $pushNotificationTransfer->getGroupOrFail()->getNameOrFail(),
             ],
@@ -93,10 +99,9 @@ class PushNotificationFacadeSendPushNotificationsTest extends Unit
                 ),
             ],
         );
-        $pushNotificationFacade = $this->tester->getFacade();
 
         // Act
-        $pushNotificationCollectionResponseTransfer = $pushNotificationFacade->sendPushNotifications();
+        $pushNotificationCollectionResponseTransfer = $this->tester->getFacade()->sendPushNotifications();
 
         // Assert
         $pushNotificationSubscriptionDeliveryLogEntity = $this->tester->findPushNotificationSubscriptionDeliveryLogEntity(

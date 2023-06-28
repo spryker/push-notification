@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\PushNotification\Business\PushNotificationFacade;
+namespace SprykerTest\Zed\PushNotification\Business\Facade;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\PushNotificationSubscriptionCollectionDeleteCriteriaTransfer;
@@ -18,12 +18,11 @@ use SprykerTest\Zed\PushNotification\PushNotificationBusinessTester;
  * @group Zed
  * @group PushNotification
  * @group Business
- * @group PushNotificationFacade
  * @group Facade
- * @group PushNotificationFacadeDeleteExpiredPushNotificationSubscriptionsTest
+ * @group DeleteExpiredPushNotificationSubscriptionsTest
  * Add your own group annotations below this line
  */
-class PushNotificationFacadeDeleteExpiredPushNotificationSubscriptionsTest extends Unit
+class DeleteExpiredPushNotificationSubscriptionsTest extends Unit
 {
     /**
      * @var \SprykerTest\Zed\PushNotification\PushNotificationBusinessTester

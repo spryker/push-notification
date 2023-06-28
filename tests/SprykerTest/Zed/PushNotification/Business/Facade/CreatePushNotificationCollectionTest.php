@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\PushNotification\Business\PushNotificationFacade;
+namespace SprykerTest\Zed\PushNotification\Business\Facade;
 
 use ArrayObject;
 use Codeception\Test\Unit;
@@ -20,12 +20,11 @@ use SprykerTest\Zed\PushNotification\PushNotificationBusinessTester;
  * @group Zed
  * @group PushNotification
  * @group Business
- * @group PushNotificationFacade
  * @group Facade
- * @group PushNotificationFacadeCreatePushNotificationCollectionTest
+ * @group CreatePushNotificationCollectionTest
  * Add your own group annotations below this line
  */
-class PushNotificationFacadeCreatePushNotificationCollectionTest extends Unit
+class CreatePushNotificationCollectionTest extends Unit
 {
     /**
      * @uses \Spryker\Zed\PushNotification\Business\Validator\Rules\PushNotification\PushNotificationProviderExistsValidatorRule::GLOSSARY_KEY_VALIDATION_ERROR_PUSH_NOTIFICATION_PROVIDER_NOT_FOUND
