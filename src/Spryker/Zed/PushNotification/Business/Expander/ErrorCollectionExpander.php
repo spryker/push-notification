@@ -11,12 +11,6 @@ use Generated\Shared\Transfer\ErrorCollectionTransfer;
 
 class ErrorCollectionExpander implements ErrorCollectionExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $extraErrorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     public function expandErrorCollection(
         ErrorCollectionTransfer $errorCollectionTransfer,
         ErrorCollectionTransfer $extraErrorCollectionTransfer

@@ -49,9 +49,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -59,9 +56,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->tester->ensurePushNotificationTablesAreEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testShouldDeletePushNotificationProviderCollectionByPushNotificationProviderUuids(): void
     {
         // Arrange
@@ -85,9 +79,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->assertEquals($pushNotificationProviderTransfer, $deletedPushNotificationProviderTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShouldValidateExistenceAmongPersistedPushNotifications(): void
     {
         $pushNotificationTransfer = $this->tester->havePushNotification();
@@ -112,9 +103,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(1, $this->tester->getPushNotificationProviderQuery()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldValidateExistenceAmongPersistedPushNotificationSubscriptions(): void
     {
         $pushNotificationSubscriptionTransfer = $this->tester->havePushNotificationSubscription();
@@ -139,9 +127,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(1, $this->tester->getPushNotificationProviderQuery()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldDeletePushNotificationProviderCollectionForNonTransactionalMode(): void
     {
         $firstPushNotificationProviderTransfer = $this->tester->havePushNotification()->getProvider();
@@ -168,9 +153,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(1, $this->tester->getPushNotificationProviderQuery()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenIsTransactionalIsNotSet(): void
     {
         // Arrange
@@ -185,9 +167,6 @@ class DeletePushNotificationProviderCollectionTest extends Unit
         $this->tester->getFacade()->deletePushNotificationProviderCollection($pushNotificationProviderCollectionDeleteCriteriaTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenUuidsIsNotSet(): void
     {
         // Arrange

@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
 
 interface PushNotificationProviderDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function deletePushNotificationProviderCollection(
         PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
     ): PushNotificationProviderCollectionResponseTransfer;

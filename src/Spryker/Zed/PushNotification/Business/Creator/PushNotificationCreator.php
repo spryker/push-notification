@@ -42,12 +42,6 @@ class PushNotificationCreator implements PushNotificationCreatorInterface
      */
     protected PushNotificationProviderReaderInterface $pushNotificationProviderReader;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     * @param \Spryker\Zed\PushNotification\Business\Validator\PushNotificationValidatorInterface $pushNotificationValidator
-     * @param \Spryker\Zed\PushNotification\Business\Filter\PushNotificationFilterInterface $pushNotificationFilter
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationProviderReaderInterface $pushNotificationProviderReader
-     */
     public function __construct(
         PushNotificationEntityManagerInterface $pushNotificationEntityManager,
         PushNotificationValidatorInterface $pushNotificationValidator,
@@ -60,11 +54,6 @@ class PushNotificationCreator implements PushNotificationCreatorInterface
         $this->pushNotificationProviderReader = $pushNotificationProviderReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     public function createPushNotificationCollection(
         PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
     ): PushNotificationCollectionResponseTransfer {

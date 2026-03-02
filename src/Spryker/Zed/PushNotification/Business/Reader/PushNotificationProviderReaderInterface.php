@@ -17,11 +17,6 @@ interface PushNotificationProviderReaderInterface
      */
     public function getPushNotificationProviderTransfersIndexedByName(): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionTransfer
-     */
     public function getPushNotificationProviderCollection(
         PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
     ): PushNotificationProviderCollectionTransfer;

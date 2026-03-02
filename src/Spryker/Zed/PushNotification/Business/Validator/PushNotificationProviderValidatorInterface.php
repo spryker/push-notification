@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
 
 interface PushNotificationProviderValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function validate(
         PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer
     ): PushNotificationProviderCollectionResponseTransfer;

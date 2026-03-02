@@ -198,11 +198,6 @@ class PushNotificationHelper extends Module
         return $pushNotificationSubscriptionDeliveryLogTransfer;
     }
 
-    /**
-     * @param int $idPushNotificationGroup
-     *
-     * @return void
-     */
     protected function deletePushNotificationGroup(int $idPushNotificationGroup): void
     {
         $pushNotificationGroup = $this->getPushNotificationGroupQuery()->findOneByIdPushNotificationGroup($idPushNotificationGroup);
@@ -212,11 +207,6 @@ class PushNotificationHelper extends Module
         }
     }
 
-    /**
-     * @param int $idPushNotificationSubscription
-     *
-     * @return void
-     */
     protected function deletePushNotificationSubscription(int $idPushNotificationSubscription): void
     {
         $pushNotificationSubscriptionEntity = $this->getPushNotificationSubscriptionQuery()
@@ -227,11 +217,6 @@ class PushNotificationHelper extends Module
         }
     }
 
-    /**
-     * @param int $idPushNotification
-     *
-     * @return void
-     */
     protected function deletePushNotification(int $idPushNotification): void
     {
         $pushNotificationEntity = $this->getPushNotificationQuery()->findOneByIdPushNotification($idPushNotification);
@@ -241,11 +226,6 @@ class PushNotificationHelper extends Module
         }
     }
 
-    /**
-     * @param int $idPushNotificationProvider
-     *
-     * @return void
-     */
     protected function deletePushNotificationProvider(int $idPushNotificationProvider): void
     {
         $pushNotificationProviderEntity = $this->getPushNotificationProviderQuery()
@@ -256,11 +236,6 @@ class PushNotificationHelper extends Module
         }
     }
 
-    /**
-     * @param int $idPushNotificationSubscriptionDeliveryLog
-     *
-     * @return void
-     */
     protected function deletePushNotificationSubscriptionDeliveryLog(int $idPushNotificationSubscriptionDeliveryLog): void
     {
         $pushNotificationSubscriptionDeliveryLogEntity = $this->getPushNotificationSubscriptionDeliveryLogQuery()
@@ -271,41 +246,26 @@ class PushNotificationHelper extends Module
         }
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroupQuery
-     */
     protected function getPushNotificationGroupQuery(): SpyPushNotificationGroupQuery
     {
         return SpyPushNotificationGroupQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery
-     */
     protected function getPushNotificationSubscriptionQuery(): SpyPushNotificationSubscriptionQuery
     {
         return SpyPushNotificationSubscriptionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery
-     */
     protected function getPushNotificationQuery(): SpyPushNotificationQuery
     {
         return SpyPushNotificationQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery
-     */
     protected function getPushNotificationProviderQuery(): SpyPushNotificationProviderQuery
     {
         return SpyPushNotificationProviderQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLogQuery
-     */
     protected function getPushNotificationSubscriptionDeliveryLogQuery(): SpyPushNotificationSubscriptionDeliveryLogQuery
     {
         return SpyPushNotificationSubscriptionDeliveryLogQuery::create();

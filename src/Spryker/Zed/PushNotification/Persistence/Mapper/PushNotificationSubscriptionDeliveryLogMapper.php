@@ -24,22 +24,12 @@ class PushNotificationSubscriptionDeliveryLogMapper
      */
     protected PushNotificationSubscriptionMapper $pushNotificationSubscriptionMapper;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationMapper $pushNotificationMapper
-     * @param \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationSubscriptionMapper $pushNotificationSubscriptionMapper
-     */
     public function __construct(PushNotificationMapper $pushNotificationMapper, PushNotificationSubscriptionMapper $pushNotificationSubscriptionMapper)
     {
         $this->pushNotificationMapper = $pushNotificationMapper;
         $this->pushNotificationSubscriptionMapper = $pushNotificationSubscriptionMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLog $pushNotificationSubscriptionDeliveryLogEntity
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLog
-     */
     public function mapPushNotificationSubscriptionDeliveryLogTransferToPushNotificationSubscriptionDeliveryLogEntity(
         PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer,
         SpyPushNotificationSubscriptionDeliveryLog $pushNotificationSubscriptionDeliveryLogEntity
@@ -69,12 +59,6 @@ class PushNotificationSubscriptionDeliveryLogMapper
         return $pushNotificationSubscriptionDeliveryLogEntity;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLog $pushNotificationSubscriptionDeliveryLogEntity
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionDeliveryLogTransfer
-     */
     public function mapPushNotificationSubscriptionDeliveryLogEntityToPushNotificationSubscriptionDeliveryLogTransfer(
         SpyPushNotificationSubscriptionDeliveryLog $pushNotificationSubscriptionDeliveryLogEntity,
         PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer

@@ -38,9 +38,6 @@ class CreatePushNotificationCollectionTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationCollectionShouldReturnCreatedPushNotificationCollectionWhenCreationIsSuccessful(): void
     {
         // Arrange
@@ -63,9 +60,6 @@ class CreatePushNotificationCollectionTest extends Unit
         $this->assertEmpty($pushNotificationCollectionResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationCollectionShouldReturnErrorsWhenInvalidPushNotificationsGiven(): void
     {
         // Arrange
@@ -99,9 +93,6 @@ class CreatePushNotificationCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationCollectionShouldCreateOnlyValidPushNotificationsWhenNonTransactionalModeUsed(): void
     {
         // Arrange
@@ -133,9 +124,6 @@ class CreatePushNotificationCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationCollectionShouldNotCreatePushNotificationsWhenValidAndInvalidPushNotificationsGivenInTransactionMode(): void
     {
         // Arrange
@@ -167,11 +155,6 @@ class CreatePushNotificationCollectionTest extends Unit
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer
-     *
-     * @return int
-     */
     protected function countPersistedPushNotifications(
         PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer
     ): int {

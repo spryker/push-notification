@@ -14,12 +14,6 @@ use Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer;
 
 class PushNotificationSubscriptionMapper implements PushNotificationSubscriptionMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer
-     */
     public function mapPushNotificationSubscriptionCollectionDeleteCriteriaTransferToPushNotificationSubscriptionCriteriaTransfer(
         PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer,
         PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer

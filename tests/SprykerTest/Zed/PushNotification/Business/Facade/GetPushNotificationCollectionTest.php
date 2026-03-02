@@ -39,9 +39,6 @@ class GetPushNotificationCollectionTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -49,9 +46,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->tester->ensurePushNotificationTablesAreEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnEmptyPushNotificationCollection(): void
     {
         // Arrange
@@ -69,9 +63,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertNull($pushNotificationCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionFilteredByPushNotificationIds(): void
     {
         // Arrange
@@ -96,9 +87,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertNull($pushNotificationCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionFilteredByPushNotificationProviderId(): void
     {
         // Arrange
@@ -126,9 +114,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertNull($pushNotificationCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionFilteredByUuid(): void
     {
         // Arrange
@@ -153,9 +138,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertNull($pushNotificationCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionFilteredByNotificationSent(): void
     {
         // Arrange
@@ -186,9 +168,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertNull($pushNotificationCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionByLimitAndOffset(): void
     {
         // Arrange
@@ -211,9 +190,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertSame(4, $pushNotificationCollectionTransfer->getPaginationOrFail()->getNbResultsOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionByPagination(): void
     {
         // Arrange
@@ -247,9 +223,6 @@ class GetPushNotificationCollectionTest extends Unit
         $this->assertSame(1, $paginationTransfer->getPreviousPageOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionSortedByAsc(): void
     {
         // Arrange
@@ -282,9 +255,6 @@ class GetPushNotificationCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationCollectionSortedByDesc(): void
     {
         // Arrange

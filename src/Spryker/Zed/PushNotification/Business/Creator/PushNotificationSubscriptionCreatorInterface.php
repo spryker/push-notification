@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\PushNotificationSubscriptionCollectionResponseTran
 
 interface PushNotificationSubscriptionCreatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionRequestTransfer $pushNotificationSubscriptionCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionResponseTransfer
-     */
     public function createPushNotificationSubscriptionCollection(
         PushNotificationSubscriptionCollectionRequestTransfer $pushNotificationSubscriptionCollectionRequestTransfer
     ): PushNotificationSubscriptionCollectionResponseTransfer;

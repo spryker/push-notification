@@ -36,11 +36,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class PushNotificationRepository extends AbstractRepository implements PushNotificationRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionTransfer
-     */
     public function getPushNotificationCollection(
         PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
     ): PushNotificationCollectionTransfer {
@@ -79,11 +74,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionTransfer
-     */
     public function getPushNotificationProviderCollection(
         PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
     ): PushNotificationProviderCollectionTransfer {
@@ -116,11 +106,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationGroupCriteriaTransfer $pushNotificationGroupCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationGroupCollectionTransfer
-     */
     public function getPushNotificationGroupCollection(
         PushNotificationGroupCriteriaTransfer $pushNotificationGroupCriteriaTransfer
     ): PushNotificationGroupCollectionTransfer {
@@ -152,11 +137,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionTransfer
-     */
     public function getPushNotificationSubscriptionCollection(
         PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
     ): PushNotificationSubscriptionCollectionTransfer {
@@ -181,11 +161,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
-     *
-     * @return bool
-     */
     public function pushNotificationSubscriptionExists(
         PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
     ): bool {
@@ -198,11 +173,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $pushNotificationSubscriptionQuery->exists();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
-     *
-     * @return bool
-     */
     public function pushNotificationExists(
         PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
     ): bool {
@@ -215,12 +185,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $pushNotificationQuery->exists();
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroupQuery $pushNotificationGroupQuery
-     * @param \Generated\Shared\Transfer\PushNotificationGroupCriteriaTransfer $pushNotificationGroupCriteriaTransfer
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroupQuery
-     */
     protected function applyPushNotificationGroupFilters(
         SpyPushNotificationGroupQuery $pushNotificationGroupQuery,
         PushNotificationGroupCriteriaTransfer $pushNotificationGroupCriteriaTransfer
@@ -245,12 +209,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $pushNotificationGroupQuery;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery $pushNotificationProviderQuery
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery
-     */
     protected function applyPushNotificationProviderFilters(
         SpyPushNotificationProviderQuery $pushNotificationProviderQuery,
         PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
@@ -297,12 +255,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $query;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery $pushNotificationQuery
-     * @param \Generated\Shared\Transfer\PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery
-     */
     protected function applyPushNotificationFilters(
         SpyPushNotificationQuery $pushNotificationQuery,
         PushNotificationCriteriaTransfer $pushNotificationCriteriaTransfer
@@ -354,12 +306,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $pushNotificationQuery;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $modelCriteria
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function applyPagination(ModelCriteria $modelCriteria, PaginationTransfer $paginationTransfer): ModelCriteria
     {
         if ($paginationTransfer->getOffset() !== null && $paginationTransfer->getLimit() !== null) {
@@ -386,12 +332,6 @@ class PushNotificationRepository extends AbstractRepository implements PushNotif
         return $modelCriteria;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery $pushNotificationSubscriptionQuery
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery
-     */
     protected function applyPushNotificationSubscriptionFilters(
         SpyPushNotificationSubscriptionQuery $pushNotificationSubscriptionQuery,
         PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer

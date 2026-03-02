@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer;
 
 interface PushNotificationSubscriptionReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionTransfer
-     */
     public function getPushNotificationSubscriptionCollection(
         PushNotificationSubscriptionCriteriaTransfer $pushNotificationSubscriptionCriteriaTransfer
     ): PushNotificationSubscriptionCollectionTransfer;

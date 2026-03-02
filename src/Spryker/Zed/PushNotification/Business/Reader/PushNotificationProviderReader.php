@@ -18,9 +18,6 @@ class PushNotificationProviderReader implements PushNotificationProviderReaderIn
      */
     protected PushNotificationRepositoryInterface $pushNotificationRepository;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationRepositoryInterface $pushNotificationRepository
-     */
     public function __construct(PushNotificationRepositoryInterface $pushNotificationRepository)
     {
         $this->pushNotificationRepository = $pushNotificationRepository;
@@ -42,11 +39,6 @@ class PushNotificationProviderReader implements PushNotificationProviderReaderIn
         return $pushNotificationProviderTransfersIndexedByName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionTransfer
-     */
     public function getPushNotificationProviderCollection(
         PushNotificationProviderCriteriaTransfer $pushNotificationProviderCriteriaTransfer
     ): PushNotificationProviderCollectionTransfer {

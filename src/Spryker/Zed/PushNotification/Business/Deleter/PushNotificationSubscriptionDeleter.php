@@ -41,12 +41,6 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
      */
     protected PushNotificationSubscriptionMapperInterface $pushNotificationSubscriptionMapper;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationRepositoryInterface $pushNotificationRepository
-     * @param \Spryker\Zed\PushNotification\PushNotificationConfig $pushNotificationConfig
-     * @param \Spryker\Zed\PushNotification\Business\Mapper\PushNotificationSubscriptionMapperInterface $pushNotificationSubscriptionMapper
-     */
     public function __construct(
         PushNotificationEntityManagerInterface $pushNotificationEntityManager,
         PushNotificationRepositoryInterface $pushNotificationRepository,
@@ -59,11 +53,6 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
         $this->pushNotificationSubscriptionMapper = $pushNotificationSubscriptionMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer
-     *
-     * @return void
-     */
     public function deletePushNotificationSubscriptions(
         PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer
     ): void {
@@ -87,11 +76,6 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
         } while (count($pushNotificationSubscriptionCollectionTransfer->getPushNotificationSubscriptions()) > 0);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionTransfer $pushNotificationSubscriptionCollectionTransfer
-     *
-     * @return void
-     */
     protected function executeDeletePushNotificationSubscriptionsTransaction(
         PushNotificationSubscriptionCollectionTransfer $pushNotificationSubscriptionCollectionTransfer
     ): void {
@@ -102,11 +86,6 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer
-     */
     protected function getPushNotificationSubscriptionCriteriaTransfer(
         PushNotificationSubscriptionCollectionDeleteCriteriaTransfer $pushNotificationSubscriptionCollectionDeleteCriteriaTransfer
     ): PushNotificationSubscriptionCriteriaTransfer {
@@ -120,9 +99,6 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
             );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer
-     */
     protected function getPaginatedPushNotificationSubscriptionCriteriaTransfer(): PushNotificationSubscriptionCriteriaTransfer
     {
         $paginationTransfer = (new PaginationTransfer())

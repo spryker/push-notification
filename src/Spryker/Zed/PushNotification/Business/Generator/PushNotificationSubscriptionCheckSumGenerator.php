@@ -30,10 +30,6 @@ class PushNotificationSubscriptionCheckSumGenerator implements PushNotificationS
      */
     protected PushNotificationToUtilTextServiceInterface $pushNotificationToUtilTextService;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Dependency\Service\PushNotificationToUtilEncodingServiceInterface $pushNotificationToUtilEncodingService
-     * @param \Spryker\Zed\PushNotification\Dependency\Service\PushNotificationToUtilTextServiceInterface $pushNotificationToUtilTextService
-     */
     public function __construct(
         PushNotificationToUtilEncodingServiceInterface $pushNotificationToUtilEncodingService,
         PushNotificationToUtilTextServiceInterface $pushNotificationToUtilTextService
@@ -42,11 +38,6 @@ class PushNotificationSubscriptionCheckSumGenerator implements PushNotificationS
         $this->pushNotificationToUtilTextService = $pushNotificationToUtilTextService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return string
-     */
     public function generatePayloadChecksum(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): string
     {
         $encodedPayload = $this->pushNotificationToUtilEncodingService->encodeJson(

@@ -20,20 +20,11 @@ class PushNotificationGroupReader implements PushNotificationGroupReaderInterfac
      */
     protected PushNotificationRepositoryInterface $pushNotificationRepository;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationRepositoryInterface $pushNotificationRepository
-     */
     public function __construct(PushNotificationRepositoryInterface $pushNotificationRepository)
     {
         $this->pushNotificationRepository = $pushNotificationRepository;
     }
 
-    /**
-     * @param string $name
-     * @param string|null $identifier
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationGroupTransfer|null
-     */
     public function findPushNotificationGroupByNameAndIdentifier(string $name, ?string $identifier): ?PushNotificationGroupTransfer
     {
         $pushNotificationGroupConditionsTransfer = (new PushNotificationGroupConditionsTransfer())

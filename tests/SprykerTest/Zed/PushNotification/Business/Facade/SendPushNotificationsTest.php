@@ -34,9 +34,6 @@ class SendPushNotificationsTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -44,9 +41,6 @@ class SendPushNotificationsTest extends Unit
         $this->tester->ensurePushNotificationTablesAreEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testSendPushNotificationsShouldReturnSentPushNotificationsWhenSentIsSuccessful(): void
     {
         // Arrange
@@ -78,9 +72,6 @@ class SendPushNotificationsTest extends Unit
         $this->assertEmpty($pushNotificationCollectionResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testSendPushNotificationsShouldCreateDeliveryLogWhenSentIsSuccessful(): void
     {
         // Arrange
@@ -116,9 +107,6 @@ class SendPushNotificationsTest extends Unit
         $this->assertNotEmpty($pushNotificationSubscriptionDeliveryLogEntity);
     }
 
-    /**
-     * @return void
-     */
     public function testSendPushNotificationsShouldReturnErrorsWhenSentIsNotSuccessful(): void
     {
         // Arrange

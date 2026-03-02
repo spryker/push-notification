@@ -33,11 +33,6 @@ class PushNotificationMapper
      */
     protected PushNotificationProviderMapper $pushNotificationProviderMapper;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Dependency\Service\PushNotificationToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationGroupMapper $pushNotificationGroupMapper
-     * @param \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationProviderMapper $pushNotificationProviderMapper
-     */
     public function __construct(
         PushNotificationToUtilEncodingServiceInterface $utilEncodingService,
         PushNotificationGroupMapper $pushNotificationGroupMapper,
@@ -48,12 +43,6 @@ class PushNotificationMapper
         $this->pushNotificationProviderMapper = $pushNotificationProviderMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotification $pushNotificationEntity
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotification
-     */
     public function mapPushNotificationTransferToPushNotificationEntity(
         PushNotificationTransfer $pushNotificationTransfer,
         SpyPushNotification $pushNotificationEntity
@@ -77,12 +66,6 @@ class PushNotificationMapper
         return $pushNotificationEntity;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotification $pushNotificationEntity
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationTransfer
-     */
     public function mapPushNotificationEntityToPushNotificationTransfer(
         SpyPushNotification $pushNotificationEntity,
         PushNotificationTransfer $pushNotificationTransfer
@@ -128,12 +111,6 @@ class PushNotificationMapper
         return $pushNotificationCollectionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\Base\SpyPushNotificationSubscription $pushNotificationSubscriptionEntity
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     public function mapPushNotificationSubscriptionEntityToPushNotificationSubscriptionTransfer(
         SpyPushNotificationSubscription $pushNotificationSubscriptionEntity,
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
@@ -150,12 +127,6 @@ class PushNotificationMapper
         return $pushNotificationSubscriptionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotification $pushNotificationEntity
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationTransfer
-     */
     protected function mapPushNotificationProvider(
         SpyPushNotification $pushNotificationEntity,
         PushNotificationTransfer $pushNotificationTransfer
@@ -170,12 +141,6 @@ class PushNotificationMapper
         return $pushNotificationTransfer->setProvider($pushNotificationProviderTransfer);
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotification $pushNotificationEntity
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationTransfer
-     */
     protected function mapPushNotificationSubscriptions(
         SpyPushNotification $pushNotificationEntity,
         PushNotificationTransfer $pushNotificationTransfer

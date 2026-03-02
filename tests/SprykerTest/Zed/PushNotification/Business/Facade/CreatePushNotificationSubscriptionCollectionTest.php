@@ -74,9 +74,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionShouldReturnCreatedPushNotificationSubscriptionCollectionWhenCreationIsSuccessful(): void
     {
         // Arrange
@@ -98,9 +95,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         $this->assertEmpty($pushNotificationSubscriptionResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionShouldReturnValidationErrorWhenInvalidProviderNameGiven(): void
     {
         // Arrange
@@ -129,9 +123,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionShouldReturnValidationErrorWhenGroupNameIsNotAllowed(): void
     {
         // Arrange
@@ -159,9 +150,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionShouldCreateOnlyValidPushNotificationSubscriptionsWhenNonTransactionalModeUsed(): void
     {
         // Arrange
@@ -195,9 +183,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionShouldNotCreatePushNotificationSubscriptionsWhenValidAndInvalidPushNotificationSubscriptionsGivenInTransactionMode(): void
     {
         // Arrange
@@ -231,9 +216,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionSuccessWhenValidLocaleProvided(): void
     {
         // Arrange
@@ -270,9 +252,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePushNotificationSubscriptionCollectionFailsWhenInvalidLocaleProvided(): void
     {
         // Arrange
@@ -307,11 +286,6 @@ class CreatePushNotificationSubscriptionCollectionTest extends Unit
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionResponseTransfer $pushNotificationSubscriptionCollectionResponseTransfer
-     *
-     * @return int
-     */
     protected function countPersistedPushNotificationSubscriptions(
         PushNotificationSubscriptionCollectionResponseTransfer $pushNotificationSubscriptionCollectionResponseTransfer
     ): int {

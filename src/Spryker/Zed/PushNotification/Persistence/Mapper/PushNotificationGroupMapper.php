@@ -14,12 +14,6 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class PushNotificationGroupMapper
 {
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroup $pushNotificationGroupEntity
-     * @param \Generated\Shared\Transfer\PushNotificationGroupTransfer $pushNotificationGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationGroupTransfer
-     */
     public function mapPushNotificationGroupEntityToPushNotificationGroupTransfer(
         SpyPushNotificationGroup $pushNotificationGroupEntity,
         PushNotificationGroupTransfer $pushNotificationGroupTransfer

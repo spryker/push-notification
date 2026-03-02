@@ -66,9 +66,6 @@ class PushNotificationBusinessTester extends Actor
      */
     public const TEST_PUSH_NOTIFICATION_PROVIDER_NAME_WWW_GOOGLE_FIREBASE = 'www-google-firebase-test';
 
-    /**
-     * @return void
-     */
     public function ensurePushNotificationTablesAreEmpty(): void
     {
         $this->ensureDatabaseTableIsEmpty($this->getPushNotificationProviderQuery());
@@ -77,25 +74,16 @@ class PushNotificationBusinessTester extends Actor
         $this->ensureDatabaseTableIsEmpty($this->getPushNotificationQueryQuery());
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery
-     */
     public function getPushNotificationProviderQuery(): SpyPushNotificationProviderQuery
     {
         return SpyPushNotificationProviderQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery
-     */
     public function getPushNotificationSubscriptionQuery(): SpyPushNotificationSubscriptionQuery
     {
         return SpyPushNotificationSubscriptionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLogQuery
-     */
     public function getPushNotificationSubscriptionDeliveryLogQuery(): SpyPushNotificationSubscriptionDeliveryLogQuery
     {
         return SpyPushNotificationSubscriptionDeliveryLogQuery::create();
@@ -233,12 +221,6 @@ class PushNotificationBusinessTester extends Actor
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Spryker\Zed\PushNotificationExtension\Dependency\Plugin\PushNotificationSenderPluginInterface
-     */
     public function createPushNotificationSenderPluginMockWithExtendedPushNotificationTransfer(
         PushNotificationTransfer $pushNotificationTransfer,
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
@@ -278,9 +260,6 @@ class PushNotificationBusinessTester extends Actor
         return $mock;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     public function createExpiredPushNotificationSubscription(): PushNotificationSubscriptionTransfer
     {
         return $this->havePushNotificationSubscription(
@@ -292,9 +271,6 @@ class PushNotificationBusinessTester extends Actor
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     public function createActualPushNotificationSubscription(): PushNotificationSubscriptionTransfer
     {
         return $this->havePushNotificationSubscription(
@@ -306,11 +282,6 @@ class PushNotificationBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param int $idPushNotificationSubscription
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscription|null
-     */
     public function findPushNotificationSubscriptionEntityById(int $idPushNotificationSubscription): ?SpyPushNotificationSubscription
     {
         return SpyPushNotificationSubscriptionQuery::create()
@@ -348,11 +319,6 @@ class PushNotificationBusinessTester extends Actor
         ];
     }
 
-    /**
-     * @param bool $isAscending
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer
-     */
     public function createPushNotificationProviderCriteriaTransferWithSort(
         bool $isAscending
     ): PushNotificationProviderCriteriaTransfer {
@@ -366,14 +332,6 @@ class PushNotificationBusinessTester extends Actor
         return $pushNotificationProviderCriteriaTransfer;
     }
 
-    /**
-     * @param int|null $limit
-     * @param int|null $offset
-     * @param int|null $page
-     * @param int|null $maxPerPage
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCriteriaTransfer
-     */
     public function createPushNotificationProviderCriteriaTransferWithPagination(
         ?int $limit = null,
         ?int $offset = null,
@@ -439,12 +397,6 @@ class PushNotificationBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param int $idPushNotification
-     * @param int $idPushNotificationSubscription
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLog|null
-     */
     public function findPushNotificationSubscriptionDeliveryLogEntity(
         int $idPushNotification,
         int $idPushNotificationSubscription
@@ -476,9 +428,6 @@ class PushNotificationBusinessTester extends Actor
             ->setProvider($pushNotificationProviderTransfer);
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery
-     */
     protected function getPushNotificationQueryQuery(): SpyPushNotificationQuery
     {
         return SpyPushNotificationQuery::create();

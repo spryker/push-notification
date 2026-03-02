@@ -30,10 +30,6 @@ class PushNotificationSubscriptionGroupNameAllowedValidatorRule implements PushN
      */
     protected ErrorCreatorInterface $errorCreator;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\PushNotificationConfig $pushNotificationConfig
-     * @param \Spryker\Zed\PushNotification\Business\Creator\ErrorCreatorInterface $errorCreator
-     */
     public function __construct(
         PushNotificationConfig $pushNotificationConfig,
         ErrorCreatorInterface $errorCreator
@@ -66,13 +62,6 @@ class PushNotificationSubscriptionGroupNameAllowedValidatorRule implements PushN
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     * @param string $pushNotificationSubscriptionIdentifier
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     public function validatePushNotificationSubscription(
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer,

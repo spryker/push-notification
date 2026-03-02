@@ -18,9 +18,6 @@ class PushNotificationProviderFilter implements PushNotificationProviderFilterIn
      */
     protected ErrorEntityIdentifierExtractorInterface $errorEntityIdentifierExtractor;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Extractor\ErrorEntityIdentifierExtractorInterface $errorEntityIdentifierExtractor
-     */
     public function __construct(ErrorEntityIdentifierExtractorInterface $errorEntityIdentifierExtractor)
     {
         $this->errorEntityIdentifierExtractor = $errorEntityIdentifierExtractor;

@@ -32,10 +32,6 @@ class PushNotificationSubscriptionExistsPushNotificationProviderValidatorRule im
      */
     protected ErrorAdderInterface $errorAdder;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationRepositoryInterface $pushNotificationRepository
-     * @param \Spryker\Zed\PushNotification\Business\Validator\Util\ErrorAdderInterface $errorAdder
-     */
     public function __construct(
         PushNotificationRepositoryInterface $pushNotificationRepository,
         ErrorAdderInterface $errorAdder
@@ -66,11 +62,6 @@ class PushNotificationSubscriptionExistsPushNotificationProviderValidatorRule im
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderTransfer $pushNotificationProviderTransfer
-     *
-     * @return bool
-     */
     protected function hasPushNotificationSubscription(PushNotificationProviderTransfer $pushNotificationProviderTransfer): bool
     {
         $pushNotificationSubscriptionConditionsTransfer = (new PushNotificationSubscriptionConditionsTransfer())

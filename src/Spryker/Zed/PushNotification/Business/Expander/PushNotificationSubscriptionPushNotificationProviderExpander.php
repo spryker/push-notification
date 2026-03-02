@@ -17,9 +17,6 @@ class PushNotificationSubscriptionPushNotificationProviderExpander implements Pu
      */
     protected PushNotificationProviderReaderInterface $pushNotificationProviderReader;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationProviderReaderInterface $pushNotificationProviderReader
-     */
     public function __construct(
         PushNotificationProviderReaderInterface $pushNotificationProviderReader
     ) {

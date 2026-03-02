@@ -29,10 +29,6 @@ class PushNotificationSubscriptionProviderExistsValidatorRule implements PushNot
      */
     protected ErrorCreatorInterface $errorCreator;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationProviderReaderInterface $pushNotificationProviderReader
-     * @param \Spryker\Zed\PushNotification\Business\Creator\ErrorCreatorInterface $errorCreator
-     */
     public function __construct(
         PushNotificationProviderReaderInterface $pushNotificationProviderReader,
         ErrorCreatorInterface $errorCreator

@@ -52,11 +52,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         $this->pushNotificationSubscriptionDeliveryLogCreator = $pushNotificationSubscriptionDeliveryLogCreator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     public function sendPushNotifications(
         PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
     ): PushNotificationCollectionResponseTransfer {
@@ -79,11 +74,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         return $pushNotificationCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     protected function executePushNotificationSenderPlugins(
         PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
     ): PushNotificationCollectionResponseTransfer {
@@ -103,12 +93,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         return $pushNotificationCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     protected function extendPushNotificationCollectionResponse(
         PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer,
         PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
@@ -124,12 +108,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     protected function extendPushNotificationCollection(
         PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer,
         PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
@@ -141,12 +119,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         return $pushNotificationCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionResponseTransfer
-     */
     protected function extendPushNotificationErrors(
         PushNotificationCollectionResponseTransfer $pushNotificationCollectionResponseTransfer,
         PushNotificationCollectionResponseTransfer $extraPushNotificationCollectionResponseTransfer
@@ -158,11 +130,6 @@ class PushNotificationSender implements PushNotificationSenderInterface
         return $pushNotificationCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationCollectionRequestTransfer
-     */
     protected function executePushNotificationPreSendPlugins(
         PushNotificationCollectionRequestTransfer $pushNotificationCollectionRequestTransfer
     ): PushNotificationCollectionRequestTransfer {

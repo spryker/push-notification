@@ -29,57 +29,36 @@ use Spryker\Zed\PushNotification\PushNotificationDependencyProvider;
  */
 class PushNotificationPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationGroupQuery
-     */
     public function createPushNotificationGroupQuery(): SpyPushNotificationGroupQuery
     {
         return SpyPushNotificationGroupQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProviderQuery
-     */
     public function createPushNotificationProviderQuery(): SpyPushNotificationProviderQuery
     {
         return SpyPushNotificationProviderQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionQuery
-     */
     public function createPushNotificationSubscriptionQuery(): SpyPushNotificationSubscriptionQuery
     {
         return SpyPushNotificationSubscriptionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscriptionDeliveryLogQuery
-     */
     public function createPushNotificationSubscriptionDeliveryLogQuery(): SpyPushNotificationSubscriptionDeliveryLogQuery
     {
         return SpyPushNotificationSubscriptionDeliveryLogQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationGroupMapper
-     */
     public function createPushNotificationGroupMapper(): PushNotificationGroupMapper
     {
         return new PushNotificationGroupMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationSubscriptionMapper
-     */
     public function createPushNotificationSubscriptionMapper(): PushNotificationSubscriptionMapper
     {
         return new PushNotificationSubscriptionMapper($this->getUtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationMapper
-     */
     public function createPushNotificationMapper(): PushNotificationMapper
     {
         return new PushNotificationMapper(
@@ -89,17 +68,11 @@ class PushNotificationPersistenceFactory extends AbstractPersistenceFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationProviderMapper
-     */
     public function createPushNotificationProviderMapper(): PushNotificationProviderMapper
     {
         return new PushNotificationProviderMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PushNotificationSubscriptionDeliveryLogMapper
-     */
     public function createPushNotificationSubscriptionDeliveryLogMapper(): PushNotificationSubscriptionDeliveryLogMapper
     {
         return new PushNotificationSubscriptionDeliveryLogMapper(
@@ -108,25 +81,16 @@ class PushNotificationPersistenceFactory extends AbstractPersistenceFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Persistence\Mapper\PaginationMapper
-     */
     public function createPaginationMapper(): PaginationMapper
     {
         return new PaginationMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\PushNotification\Dependency\Service\PushNotificationToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): PushNotificationToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(PushNotificationDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationQuery
-     */
     public function createPushNotificationQuery(): SpyPushNotificationQuery
     {
         return SpyPushNotificationQuery::create();

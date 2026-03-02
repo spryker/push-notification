@@ -22,12 +22,6 @@ class PushNotificationToUtilTextServiceBridge implements PushNotificationToUtilT
         $this->utilTextService = $utilTextService;
     }
 
-    /**
-     * @param mixed $value
-     * @param string $algorithm
-     *
-     * @return string
-     */
     public function hashValue(mixed $value, string $algorithm): string
     {
         return $this->utilTextService->hashValue($value, $algorithm);

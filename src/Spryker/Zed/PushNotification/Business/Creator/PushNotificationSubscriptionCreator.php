@@ -79,11 +79,6 @@ class PushNotificationSubscriptionCreator implements PushNotificationSubscriptio
         $this->pushNotificationSubscriptionExpanders = $pushNotificationSubscriptionExpanders;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionRequestTransfer $pushNotificationSubscriptionCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCollectionResponseTransfer
-     */
     public function createPushNotificationSubscriptionCollection(
         PushNotificationSubscriptionCollectionRequestTransfer $pushNotificationSubscriptionCollectionRequestTransfer
     ): PushNotificationSubscriptionCollectionResponseTransfer {
@@ -201,11 +196,6 @@ class PushNotificationSubscriptionCreator implements PushNotificationSubscriptio
         return $persistedPushNotificationSubscriptionTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     protected function setPushNotificationSubscriptionExpiredAt(
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
     ): PushNotificationSubscriptionTransfer {

@@ -28,11 +28,6 @@ class PushNotificationProviderValidator implements PushNotificationProviderValid
         $this->pushNotificationProviderValidatorRules = $pushNotificationProviderValidatorRules;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function validate(
         PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer
     ): PushNotificationProviderCollectionResponseTransfer {
@@ -79,12 +74,6 @@ class PushNotificationProviderValidator implements PushNotificationProviderValid
         return $pushNotificationProviderValidatorRule->isTerminated($initialErrorTransfers, $postValidationErrorTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     protected function mergeErrors(
         PushNotificationProviderCollectionResponseTransfer $pushNotificationProviderCollectionResponseTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer

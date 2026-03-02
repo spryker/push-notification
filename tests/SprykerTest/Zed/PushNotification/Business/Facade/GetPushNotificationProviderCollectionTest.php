@@ -48,9 +48,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
      */
     protected array $pushNotificationProviderTransfers;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -59,9 +56,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         $this->pushNotificationProviderTransfers = $this->createDummyPushNotificationProviderTransfers();
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnEmptyPushNotificationProviderCollection(): void
     {
         // Arrange
@@ -85,9 +79,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         $this->assertNull($pushNotificationProviderCollectionTransfer->getPagination());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionByUuids(): void
     {
         // Arrange
@@ -122,9 +113,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionByUuidsInversed(): void
     {
         // Arrange
@@ -161,9 +149,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionByNames(): void
     {
         // Arrange
@@ -198,9 +183,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionPaginatedByOffsetAndLimit(): void
     {
         // Arrange
@@ -230,9 +212,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionPaginatedByPage(): void
     {
         // Arrange
@@ -259,9 +238,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionSortedByFieldAsc(): void
     {
         // Arrange
@@ -295,9 +271,6 @@ class GetPushNotificationProviderCollectionTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnPushNotificationProviderCollectionSortedByFieldDesc(): void
     {
         // Arrange

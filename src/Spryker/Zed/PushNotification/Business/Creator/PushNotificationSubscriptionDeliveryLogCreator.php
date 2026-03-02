@@ -20,9 +20,6 @@ class PushNotificationSubscriptionDeliveryLogCreator implements PushNotification
      */
     protected PushNotificationEntityManagerInterface $pushNotificationEntityManager;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     */
     public function __construct(PushNotificationEntityManagerInterface $pushNotificationEntityManager)
     {
         $this->pushNotificationEntityManager = $pushNotificationEntityManager;

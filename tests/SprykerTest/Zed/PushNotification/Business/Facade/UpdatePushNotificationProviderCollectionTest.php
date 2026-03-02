@@ -70,9 +70,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -80,9 +77,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->tester->ensurePushNotificationTablesAreEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testShouldUpdatePushNotificationProvider(): void
     {
         // Arrange
@@ -111,9 +105,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testShouldValidateNameExistence(): void
     {
         // Arrange
@@ -143,9 +134,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(static::GLOSSARY_KEY_VALIDATION_PUSH_NOTIFICATION_PROVIDER_NAME_EXISTS, $errorTransfer->getMessageOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldValidateNameUniqueness(): void
     {
         // Arrange
@@ -205,9 +193,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(static::GLOSSARY_KEY_VALIDATION_PUSH_NOTIFICATION_PROVIDER_NAME_WRONG_LENGTH, $errorTransfer->getMessageOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldValidateExistenceByUuid(): void
     {
         // Arrange
@@ -234,9 +219,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(static::GLOSSARY_KEY_VALIDATION_PUSH_NOTIFICATION_PROVIDER_NOT_FOUND, $errorTransfer->getMessageOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldUpdatePushNotificationProvidersForNonTransactionalMode(): void
     {
         // Arrange
@@ -265,9 +247,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->assertSame(static::GLOSSARY_KEY_VALIDATION_PUSH_NOTIFICATION_PROVIDER_NAME_WRONG_LENGTH, $errorTransfer->getMessageOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenIsTransactionalIsNotSet(): void
     {
         // Arrange
@@ -283,9 +262,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->tester->getFacade()->updatePushNotificationProviderCollection($pushNotificationProviderCollectionRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenPushNotificationProvidersAreNotSet(): void
     {
         // Arrange
@@ -299,9 +275,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->tester->getFacade()->updatePushNotificationProviderCollection($pushNotificationProviderCollectionRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenPushNotificationProviderUuidIsNotSet(): void
     {
         // Arrange
@@ -320,9 +293,6 @@ class UpdatePushNotificationProviderCollectionTest extends Unit
         $this->tester->getFacade()->updatePushNotificationProviderCollection($pushNotificationProviderCollectionRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowExceptionWhenPushNotificationProviderNameIsNotSet(): void
     {
         // Arrange

@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\PushNotificationGroupTransfer;
 
 interface PushNotificationGroupReaderInterface
 {
-    /**
-     * @param string $name
-     * @param string|null $identifier
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationGroupTransfer|null
-     */
     public function findPushNotificationGroupByNameAndIdentifier(string $name, ?string $identifier): ?PushNotificationGroupTransfer;
 }

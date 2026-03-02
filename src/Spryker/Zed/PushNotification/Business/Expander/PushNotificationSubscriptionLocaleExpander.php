@@ -25,10 +25,6 @@ class PushNotificationSubscriptionLocaleExpander implements PushNotificationSubs
      */
     protected PushNotificationSubscriptionLocaleExtractorInterface $pushNotificationSubscriptionLocaleExtractor;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Dependency\Facade\PushNotificationToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\PushNotification\Business\Extractor\PushNotificationSubscriptionLocaleExtractorInterface $pushNotificationSubscriptionLocaleExtractor
-     */
     public function __construct(
         PushNotificationToLocaleFacadeInterface $localeFacade,
         PushNotificationSubscriptionLocaleExtractorInterface $pushNotificationSubscriptionLocaleExtractor

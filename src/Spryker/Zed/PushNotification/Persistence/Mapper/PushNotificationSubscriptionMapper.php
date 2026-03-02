@@ -20,20 +20,11 @@ class PushNotificationSubscriptionMapper
      */
     protected PushNotificationToUtilEncodingServiceInterface $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Dependency\Service\PushNotificationToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(PushNotificationToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscription $pushNotificationSubscriptionEntity
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscription
-     */
     public function mapPushNotificationSubscriptionTransferToPushNotificationSubscriptionEntity(
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer,
         SpyPushNotificationSubscription $pushNotificationSubscriptionEntity
@@ -87,12 +78,6 @@ class PushNotificationSubscriptionMapper
         return $pushNotificationSubscriptionCollectionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationSubscription $pushNotificationSubscriptionEntity
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     public function mapPushNotificationSubscriptionEntityToPushNotificationSubscriptionTransfer(
         SpyPushNotificationSubscription $pushNotificationSubscriptionEntity,
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer

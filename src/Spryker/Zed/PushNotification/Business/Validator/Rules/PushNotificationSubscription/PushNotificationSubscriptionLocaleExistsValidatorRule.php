@@ -37,11 +37,6 @@ class PushNotificationSubscriptionLocaleExistsValidatorRule implements PushNotif
      */
     protected ErrorCreatorInterface $errorCreator;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Dependency\Facade\PushNotificationToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\PushNotification\Business\Extractor\PushNotificationSubscriptionLocaleExtractorInterface $pushNotificationSubscriptionLocaleExtractor
-     * @param \Spryker\Zed\PushNotification\Business\Creator\ErrorCreatorInterface $errorCreator
-     */
     public function __construct(
         PushNotificationToLocaleFacadeInterface $localeFacade,
         PushNotificationSubscriptionLocaleExtractorInterface $pushNotificationSubscriptionLocaleExtractor,

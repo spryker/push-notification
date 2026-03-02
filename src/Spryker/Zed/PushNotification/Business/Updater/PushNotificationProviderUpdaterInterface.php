@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
 
 interface PushNotificationProviderUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function updatePushNotificationProviderCollection(
         PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
     ): PushNotificationProviderCollectionResponseTransfer;

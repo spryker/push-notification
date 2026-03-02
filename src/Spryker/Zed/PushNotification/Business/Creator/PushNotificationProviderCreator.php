@@ -34,11 +34,6 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
      */
     protected PushNotificationEntityManagerInterface $pushNotificationEntityManager;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface $pushNotificationProviderValidator
-     * @param \Spryker\Zed\PushNotification\Business\Filter\PushNotificationProviderFilterInterface $pushNotificationProviderFilter
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     */
     public function __construct(
         PushNotificationProviderValidatorInterface $pushNotificationProviderValidator,
         PushNotificationProviderFilterInterface $pushNotificationProviderFilter,
@@ -49,11 +44,6 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
         $this->pushNotificationEntityManager = $pushNotificationEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function createPushNotificationProviderCollection(
         PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
     ): PushNotificationProviderCollectionResponseTransfer {
@@ -110,11 +100,6 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
         return $persistedPushNotificationProviderTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFields(
         PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
     ): void {

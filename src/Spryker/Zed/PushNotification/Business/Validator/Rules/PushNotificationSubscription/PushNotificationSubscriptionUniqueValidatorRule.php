@@ -52,13 +52,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
      */
     protected ErrorCreatorInterface $errorCreator;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationSubscriptionReaderInterface $pushNotificationSubscriptionReader
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationProviderReaderInterface $pushNotificationProviderReader
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationGroupReaderInterface $pushNotificationGroupReader
-     * @param \Spryker\Zed\PushNotification\Business\Generator\PushNotificationSubscriptionCheckSumGeneratorInterface $pushNotificationSubscriptionCheckSumGenerator
-     * @param \Spryker\Zed\PushNotification\Business\Creator\ErrorCreatorInterface $errorCreator
-     */
     public function __construct(
         PushNotificationSubscriptionReaderInterface $pushNotificationSubscriptionReader,
         PushNotificationProviderReaderInterface $pushNotificationProviderReader,
@@ -97,11 +90,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return bool
-     */
     protected function isUnique(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): bool
     {
         if ($this->isNewGroup($pushNotificationSubscriptionTransfer->getGroupOrFail())) {
@@ -119,11 +107,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
         return $pushNotificationSubscriptionCollectionTransfer->getPushNotificationSubscriptions()->count() === 0;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionCriteriaTransfer
-     */
     protected function createPushNotificationSubscriptionCriteriaTransfer(
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
     ): PushNotificationSubscriptionCriteriaTransfer {
@@ -146,11 +129,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
             ->setPagination($paginationTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return int
-     */
     protected function getPushNotificationProviderId(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): int
     {
         $pushNotificationProviderTransfersIndexedByName = $this
@@ -163,11 +141,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
         return $pushNotificationProviderTransfer->getIdPushNotificationProviderOrFail();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return int
-     */
     protected function getPushNotificationGroupId(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): int
     {
         /** @var \Generated\Shared\Transfer\PushNotificationGroupTransfer $pushNotificationGroupTransfer */
@@ -179,11 +152,6 @@ class PushNotificationSubscriptionUniqueValidatorRule implements PushNotificatio
         return $pushNotificationGroupTransfer->getIdPushNotificationGroupOrFail();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationGroupTransfer $pushNotificationGroupTransfer
-     *
-     * @return bool
-     */
     protected function isNewGroup(PushNotificationGroupTransfer $pushNotificationGroupTransfer): bool
     {
         $pushNotificationGroupTransfer = $this

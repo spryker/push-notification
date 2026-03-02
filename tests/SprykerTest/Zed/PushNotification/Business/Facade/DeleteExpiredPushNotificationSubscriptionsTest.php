@@ -29,9 +29,6 @@ class DeleteExpiredPushNotificationSubscriptionsTest extends Unit
      */
     protected PushNotificationBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testDeletePushNotificationSubscriptionCollectionShouldDeleteOnlyExpiredPushNotificationSubscriptionsWhenIsExpiredFlagGiven(): void
     {
         // Arrange
@@ -59,9 +56,6 @@ class DeleteExpiredPushNotificationSubscriptionsTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeletePushNotificationSubscriptionCollectionShouldDeleteAllPushNotificationSubscriptionsWhenNoIsExpiredFlagGiven(): void
     {
         // Arrange

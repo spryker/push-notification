@@ -14,12 +14,6 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class PushNotificationProviderMapper
 {
-    /**
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProvider $pushNotificationProviderEntity
-     * @param \Generated\Shared\Transfer\PushNotificationProviderTransfer $pushNotificationProviderTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderTransfer
-     */
     public function mapPushNotificationProviderEntityToPushNotificationProviderTransfer(
         SpyPushNotificationProvider $pushNotificationProviderEntity,
         PushNotificationProviderTransfer $pushNotificationProviderTransfer
@@ -27,12 +21,6 @@ class PushNotificationProviderMapper
         return $pushNotificationProviderTransfer->fromArray($pushNotificationProviderEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderTransfer $pushNotificationProviderTransfer
-     * @param \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProvider $pushNotificationProviderEntity
-     *
-     * @return \Orm\Zed\PushNotification\Persistence\SpyPushNotificationProvider
-     */
     public function mapPushNotificationProviderTransferToPushNotificationProviderEntity(
         PushNotificationProviderTransfer $pushNotificationProviderTransfer,
         SpyPushNotificationProvider $pushNotificationProviderEntity

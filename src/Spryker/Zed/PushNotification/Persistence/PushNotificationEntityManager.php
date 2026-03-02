@@ -23,11 +23,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class PushNotificationEntityManager extends AbstractEntityManager implements PushNotificationEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer
-     */
     public function createPushNotificationSubscription(
         PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
     ): PushNotificationSubscriptionTransfer {
@@ -46,11 +41,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationTransfer $pushNotificationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationTransfer
-     */
     public function createPushNotification(
         PushNotificationTransfer $pushNotificationTransfer
     ): PushNotificationTransfer {
@@ -67,11 +57,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
             ->mapPushNotificationEntityToPushNotificationTransfer($pushNotificationEntity, $pushNotificationTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderTransfer $pushNotificationProviderTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderTransfer
-     */
     public function createPushNotificationProvider(
         PushNotificationProviderTransfer $pushNotificationProviderTransfer
     ): PushNotificationProviderTransfer {
@@ -92,11 +77,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return void
-     */
     public function deletePushNotificationSubscription(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): void
     {
         $this->getFactory()
@@ -110,11 +90,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
             ->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderTransfer $pushNotificationProviderTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderTransfer
-     */
     public function updatePushNotificationProvider(
         PushNotificationProviderTransfer $pushNotificationProviderTransfer
     ): PushNotificationProviderTransfer {
@@ -158,11 +133,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
         $pushNotificationProviderCollection->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationGroupTransfer $pushNotificationGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationGroupTransfer
-     */
     public function createPushNotificationGroup(
         PushNotificationGroupTransfer $pushNotificationGroupTransfer
     ): PushNotificationGroupTransfer {
@@ -184,11 +154,6 @@ class PushNotificationEntityManager extends AbstractEntityManager implements Pus
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationSubscriptionDeliveryLogTransfer
-     */
     public function createPushNotificationSubscriptionDeliverLog(
         PushNotificationSubscriptionDeliveryLogTransfer $pushNotificationSubscriptionDeliveryLogTransfer
     ): PushNotificationSubscriptionDeliveryLogTransfer {

@@ -9,11 +9,5 @@ namespace Spryker\Zed\PushNotification\Dependency\Service;
 
 interface PushNotificationToUtilTextServiceInterface
 {
-    /**
-     * @param mixed $value
-     * @param string $algorithm
-     *
-     * @return string
-     */
     public function hashValue(mixed $value, string $algorithm): string;
 }

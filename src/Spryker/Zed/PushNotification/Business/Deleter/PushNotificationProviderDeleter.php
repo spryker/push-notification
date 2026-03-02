@@ -49,13 +49,6 @@ class PushNotificationProviderDeleter implements PushNotificationProviderDeleter
      */
     protected PushNotificationProviderExtractorInterface $pushNotificationProviderExtractor;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     * @param \Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface $pushNotificationProviderValidator
-     * @param \Spryker\Zed\PushNotification\Business\Filter\PushNotificationProviderFilterInterface $pushNotificationProviderFilter
-     * @param \Spryker\Zed\PushNotification\Business\Reader\PushNotificationProviderReaderInterface $pushNotificationProviderReader
-     * @param \Spryker\Zed\PushNotification\Business\Extractor\PushNotificationProviderExtractorInterface $pushNotificationProviderExtractor
-     */
     public function __construct(
         PushNotificationEntityManagerInterface $pushNotificationEntityManager,
         PushNotificationProviderValidatorInterface $pushNotificationProviderValidator,
@@ -70,11 +63,6 @@ class PushNotificationProviderDeleter implements PushNotificationProviderDeleter
         $this->pushNotificationProviderExtractor = $pushNotificationProviderExtractor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function deletePushNotificationProviderCollection(
         PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
     ): PushNotificationProviderCollectionResponseTransfer {
@@ -132,11 +120,6 @@ class PushNotificationProviderDeleter implements PushNotificationProviderDeleter
         return $pushNotificationProviderTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionTransfer
-     */
     protected function getPushNotificationProviderCollection(
         PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
     ): PushNotificationProviderCollectionTransfer {
@@ -149,11 +132,6 @@ class PushNotificationProviderDeleter implements PushNotificationProviderDeleter
         return $this->pushNotificationProviderReader->getPushNotificationProviderCollection($pushNotificationProviderCriteriaTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFields(
         PushNotificationProviderCollectionDeleteCriteriaTransfer $pushNotificationProviderCollectionDeleteCriteriaTransfer
     ): void {

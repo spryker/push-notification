@@ -44,9 +44,6 @@ class NameLengthPushNotificationProviderValidatorRule implements PushNotificatio
      */
     protected ErrorAdderInterface $errorAdder;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Business\Validator\Util\ErrorAdderInterface $errorAdder
-     */
     public function __construct(ErrorAdderInterface $errorAdder)
     {
         $this->errorAdder = $errorAdder;
@@ -91,11 +88,6 @@ class NameLengthPushNotificationProviderValidatorRule implements PushNotificatio
         return $postValidationErrorTransfers->count() > $initialErrorTransfers->count();
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     protected function isPushNotificationProviderNameLengthValid(string $name): bool
     {
         return mb_strlen($name) >= static::PUSH_NOTIFICATION_PROVIDER_NAME_MIN_LENGTH

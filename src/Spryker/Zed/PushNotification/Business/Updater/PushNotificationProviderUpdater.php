@@ -34,11 +34,6 @@ class PushNotificationProviderUpdater implements PushNotificationProviderUpdater
      */
     protected PushNotificationProviderFilterInterface $pushNotificationProviderFilter;
 
-    /**
-     * @param \Spryker\Zed\PushNotification\Persistence\PushNotificationEntityManagerInterface $pushNotificationEntityManager
-     * @param \Spryker\Zed\PushNotification\Business\Validator\PushNotificationProviderValidatorInterface $pushNotificationProviderValidator
-     * @param \Spryker\Zed\PushNotification\Business\Filter\PushNotificationProviderFilterInterface $pushNotificationProviderFilter
-     */
     public function __construct(
         PushNotificationEntityManagerInterface $pushNotificationEntityManager,
         PushNotificationProviderValidatorInterface $pushNotificationProviderValidator,
@@ -49,11 +44,6 @@ class PushNotificationProviderUpdater implements PushNotificationProviderUpdater
         $this->pushNotificationProviderFilter = $pushNotificationProviderFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PushNotificationProviderCollectionResponseTransfer
-     */
     public function updatePushNotificationProviderCollection(
         PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
     ): PushNotificationProviderCollectionResponseTransfer {
@@ -113,11 +103,6 @@ class PushNotificationProviderUpdater implements PushNotificationProviderUpdater
         return $persistedPushNotificationProviderTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFields(PushNotificationProviderCollectionRequestTransfer $pushNotificationProviderCollectionRequestTransfer): void
     {
         $pushNotificationProviderCollectionRequestTransfer

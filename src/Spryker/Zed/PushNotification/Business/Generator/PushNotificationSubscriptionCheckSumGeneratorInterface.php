@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PushNotificationSubscriptionTransfer;
 
 interface PushNotificationSubscriptionCheckSumGeneratorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer
-     *
-     * @return string
-     */
     public function generatePayloadChecksum(PushNotificationSubscriptionTransfer $pushNotificationSubscriptionTransfer): string;
 }

@@ -41,9 +41,6 @@ class SendPushNotificationConsole extends Console
      */
     protected const ERROR_MESSAGE_TEMPLATE = '<error>Failed to send PushNotification %s: %s</error>';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();
@@ -53,12 +50,6 @@ class SendPushNotificationConsole extends Console
             ->setDescription(static::COMMAND_DESCRIPTION);
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return int
-     */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $pushNotificationFacade = $this->getFacade();
@@ -91,9 +82,6 @@ class SendPushNotificationConsole extends Console
         return static::CODE_ERROR;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PushNotificationCriteriaTransfer
-     */
     protected function createPushNotificationCriteriaTransfer(): PushNotificationCriteriaTransfer
     {
         $paginationTransfer = (new PaginationTransfer())
