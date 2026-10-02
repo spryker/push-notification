@@ -22,7 +22,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Spryker\\": "src/Spryker/"
+            "Spryker\\": "src/Spryker/",
+            "SprykerTest\\Shared\\PushNotification\\Helper\\": "tests/SprykerTest/Shared/PushNotification/Helper/"
         }
     },
     "autoload-dev": {
