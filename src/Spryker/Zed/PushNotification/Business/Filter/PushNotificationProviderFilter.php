@@ -52,7 +52,9 @@ class PushNotificationProviderFilter implements PushNotificationProviderFilterIn
         $errorTransfers = $pushNotificationProviderCollectionResponseTransfer->getErrors();
         $erroredEntityIdentifiers = $this->errorEntityIdentifierExtractor->extractEntityIdentifiersFromErrorTransfers($errorTransfers);
 
+        /** @var \ArrayObject<array-key, \Generated\Shared\Transfer\PushNotificationProviderTransfer> $validPushNotificationProviderTransfers */
         $validPushNotificationProviderTransfers = new ArrayObject();
+        /** @var \ArrayObject<array-key, \Generated\Shared\Transfer\PushNotificationProviderTransfer> $invalidPushNotificationProviderTransfers */
         $invalidPushNotificationProviderTransfers = new ArrayObject();
 
         foreach ($pushNotificationProviderCollectionResponseTransfer->getPushNotificationProviders() as $entityIdentifier => $pushNotificationProviderTransfer) {

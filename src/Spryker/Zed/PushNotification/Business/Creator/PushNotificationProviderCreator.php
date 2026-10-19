@@ -87,6 +87,7 @@ class PushNotificationProviderCreator implements PushNotificationProviderCreator
     protected function executeCreatePushNotificationProviderCollectionTransaction(
         ArrayObject $pushNotificationProviderTransfers
     ): ArrayObject {
+        /** @var \ArrayObject<array-key, \Generated\Shared\Transfer\PushNotificationProviderTransfer> $persistedPushNotificationProviderTransfers */
         $persistedPushNotificationProviderTransfers = new ArrayObject();
 
         foreach ($pushNotificationProviderTransfers as $entityIdentifier => $pushNotificationProviderTransfer) {

@@ -88,6 +88,7 @@ class PushNotificationProviderUpdater implements PushNotificationProviderUpdater
     protected function executeUpdatePushNotificationProviderCollectionTransaction(
         ArrayObject $pushNotificationProviderTransfers
     ): ArrayObject {
+        /** @var \ArrayObject<array-key, \Generated\Shared\Transfer\PushNotificationProviderTransfer> $persistedPushNotificationProviderTransfers */
         $persistedPushNotificationProviderTransfers = new ArrayObject();
 
         foreach ($pushNotificationProviderTransfers as $entityIdentifier => $pushNotificationProviderTransfer) {
