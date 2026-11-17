@@ -73,7 +73,8 @@ class PushNotificationSubscriptionDeleter implements PushNotificationSubscriptio
                     );
                 },
             );
-        } while (count($pushNotificationSubscriptionCollectionTransfer->getPushNotificationSubscriptions()) > 0);
+            $hasNextBatch = count($pushNotificationSubscriptionCollectionTransfer->getPushNotificationSubscriptions()) > 0;
+        } while ($hasNextBatch);
     }
 
     protected function executeDeletePushNotificationSubscriptionsTransaction(
